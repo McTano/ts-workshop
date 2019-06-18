@@ -16,6 +16,7 @@
     "exercise-6b": "start-storybook -p 6006 ",
     "exercise-7": "cross-env CHECK_FILE='exercise-7' jest --watchAll exercise-7 type ",
     "exercise-8": "cross-env CHECK_FILE='exercise-8' jest --watchAll exercise-8 type ",
+    "bt-exercise-1": "cross-env CHECK_FILE='bt-exercise-1' jest --watchAll bt-exercise-1 type ",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
