@@ -1,4 +1,5 @@
 import { AssertAssignable } from "../util";
+import { priceItem } from "../../solutions/ex-3";
 
 type Foo = Protein | EntreeType;
 
@@ -29,15 +30,16 @@ Sandwich................$4
 Add AwesomeSauce to anything for $1!
 */
 
-export type Protein =
-  | "chicken" // 🐓
-  | "jackfruit" // 🍈
-  | "tuna" // 🐟
+export type Protein = 
+  |"chicken" // 🐓
+  |"jackfruit" // 🍈
+  |"tuna" // 🐟
 
   // Pricey Proteins
-  | "carnitas" // 🐖
-  | "kingSalmon" // 🐟
-  | "portabelloCap"; // 🍄
+  |"carnitas" // 🐖
+  |"kingSalmon" // 🐟
+  |"portabelloCap" // 🍄
+
 
 export type EntreeType =
   | "taco" // 🌮
@@ -58,18 +60,44 @@ export type RiceType =
  * TODO: Update LineItem to represent an order from the
  * Monster Foodies Truck.
  * ======================================================*/
-export type LineItem = any;
 
 export interface Order {
   lineItems: LineItem[];
 }
+
+type Extras = {
+  protein: Protein,
+  awesomeSauce: boolean,
+}
+
+type Taco = {
+  type: 'taco',
+  protein: "chicken" | "jackfruit" | "carnitas",
+  salsa: boolean,
+  extraTaco: boolean,
+} & Extras
+
+type Sushi = {
+  type: "sushi",
+  protein: "tuna" | "kingSalmon",
+  riceType: RiceType,
+} & Extras
+
+type Sandwich = {
+  type: "sandwich",
+  protein: "chicken" | "jackfruit" | "portabelloCap",
+  toppings: Topping[],
+} & Extras
+
+export type LineItem = | Taco | Sushi | Sandwich
+
 
 /*
  * ======================================================
  * TODO: Implement priceOrder.
  * ======================================================*/
 export function priceOrder(order: Order): number {
-  return 1;
+  return order.lineItems.reduce((acc, item) => acc + priceItem(item), 0)
 }
 
 /* Monster's foodie truck takes orders on paper slips, 

@@ -77,41 +77,42 @@ test('EmailDraft type', () => {
   const idAsStringCheck: EmailDraft = idAsString;
 })
 
-/******************************************************************************************/
+
 // PART 2
-// describe('parseDraft', () => {
-//   const { parseDraft } = require('./code');
-//   test('type', () => {
-//     const check: (jsonString: string) => EmailDraft = parseDraft
-//     // typings:expect-error
-//     const notAnyOldType: null | undefined | string | number = parseDraft
-//   })
+/******************************************************************************************/
+describe('parseDraft', () => {
+  const { parseDraft } = require('./code');
+  test('type', () => {
+    const check: (jsonString: string) => EmailDraft = parseDraft
+    // typings:expect-error
+    const notAnyOldType: null | undefined | string | number = parseDraft
+  })
 
 
-//   it('should parse a valid draft correctly', () => {
-//     expect(()=> parseDraft(JSON.stringify(exampleEmailDraft)).toBe(exampleEmailDraft));
-//   })
+  it('should parse a valid draft correctly', () => {
+    expect(()=> parseDraft(JSON.stringify(exampleEmailDraft)).toBe(exampleEmailDraft));
+  })
 
-//   it('should accept a draft without sender name', () => {
-//     expect(()=> parseDraft(JSON.stringify(nameOfSenderIsOptional)).toBe(exampleEmailDraft));
-//   })  
+  it('should accept a draft without sender name', () => {
+    expect(()=> parseDraft(JSON.stringify(nameOfSenderIsOptional)).toBe(exampleEmailDraft));
+  })  
 
-//   it('should throw an error if data is null', () => {
-//     expect(() => parseDraft('null')).toThrow(CustomTypeError);
-//   })
+  it('should throw an error if data is null', () => {
+    expect(() => parseDraft('null')).toThrow(CustomTypeError);
+  })
 
-//   it ('should error on a json containing a string', () => {
-//     expect(() => parseDraft('"hello"')).toThrow(CustomTypeError);
-//   });
+  it ('should error on a json containing a string', () => {
+    expect(() => parseDraft('"hello"')).toThrow(CustomTypeError);
+  });
 
-//   it('should error if the data is a number', () => {
-//     expect(() => parseDraft("1")).toThrow(CustomTypeError);
-//   })
+  it('should error if the data is a number', () => {
+    expect(() => parseDraft("1")).toThrow(CustomTypeError);
+  })
   
-//   it('should error if id is a string', () => {
-//     expect(() => parseDraft(JSON.stringify(idAsString))).toThrow(CustomTypeError);
-//   });
-// });
+  it('should error if id is a string', () => {
+    expect(() => parseDraft(JSON.stringify(idAsString))).toThrow(CustomTypeError);
+  });
+});
 /******************************************************************************************/
 
   
